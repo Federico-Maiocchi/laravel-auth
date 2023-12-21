@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Http\Requests\StoreProjectRequest;
+use App\Http\Requests\UpdateProjectRequest;
 
 class ProjectController extends Controller
 
@@ -30,14 +32,14 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    // public function store(Request $request)
-    // {
-    //     $data = $request->all();
+    public function store(StoreProjectRequest $request)
+    {
+        $data = $request->all();
 
-    //     $new_project = Project::create($data);
+        $new_project = Project::create($data);
 
-    //     return redirect()->route('projects.show',$new_project->id);
-    // }
+        return redirect()->route('admin.projects.show',$new_project);
+    }
 
     /**
      * Display the specified resource.
@@ -52,32 +54,32 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    // public function edit(Project $project)
-    // {
-    //     return view('projects.edit', compact('project'));
-    // }
+    public function edit(Project $project)
+    {
+        return view('admin.projects.edit', compact('project'));
+    }
 
     /**
      * Update the specified resource in storage.
      */
-    // public function update(Request $request, Project $project)
-    // {
-    //     $data = $request->all();
+    public function update(UpdateProjectRequest $request, Project $project)
+    {
+        $data = $request->all();
 
-    //     $project->update($data);
+        $project->update($data);
 
-    //     return redirect()->route('comics.index', $project->id);
-    // }
+        return redirect()->route('admin.projects.index', $project->id);
+    }
 
     /**
      * Remove the specified resource from storage.
      */
-    // public function destroy(Project $project) 
-    // {
-    //     $project->delete();
+    public function destroy(Project $project) 
+    {
+        $project->delete();
 
-    //     return redirect()->route('projects.index');
-    // }
+        return redirect()->route('admin.projects.index');
+    }
 
     
 }
