@@ -23,9 +23,8 @@ class UpdateProjectRequest extends FormRequest
     {
         return [
             'title'=>['required','max:255','min:2'],
-
-            'img'=>['min:2','nullable'],
-            'description'=>['min:2','nullable'],
+            'img'=>['min:2'],
+            'description'=>['min:2'],
         ];
     }
 }
