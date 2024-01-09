@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="p-3">
-    <button class="btn btn-primary"><a href="{{route('admin.projects.index')}}">Sezione Progetti</a></button>
+    <button class="btn btn-info text-light"><a href="{{route('admin.projects.index')}}">Sezione Progetti</a></button>
     <h2 class="py-4">Titolo: {{$project->title}}</h2>
     <div class="container">
         <div class="row row-gap-5">
@@ -12,8 +12,8 @@
                     <div class="card-body">
                         <h5 class="card-title">{{$project->title}}</h5>
     
-                        <p class="card-text">Bio: {{$project->description}}</p>
-                        <p class="card-text">Defense: {{$project->img}}</p>
+                        <p class="card-text">Descrizione: {{$project->description}}</p>
+                        <p class="card-text">Immagine: {{$project->img}}</p>
                     </div>
                     <div class="d-flex justify-content-between p-2">
                         <div>

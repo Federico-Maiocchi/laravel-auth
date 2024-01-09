@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Project;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Route;
 
@@ -18,15 +19,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    $projects = Project::all();
+
+    return view('welcome', compact('projects'));
 });
 
 
-
-
 Route::middleware('auth', 'verified')
-    ->name('admin.')
     ->prefix('admin')
+    ->name('admin.')
     ->group(function () {
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
